@@ -26,6 +26,7 @@ public class AccountServiceImpl implements AccountService{
 
     @Autowired
     public AccountServiceImpl(AccountsRepository accountsRepository) {
+
         this.accountsRepository = accountsRepository;
     }
 
@@ -38,12 +39,19 @@ public class AccountServiceImpl implements AccountService{
 
     }
 
-    public Optional<Account> findByCustomerId(long id){
-        Optional<Account> account = accountsRepository.findByCustomerId(id);
-        return account;
-    }
-
     public Account findLastAccountNo() {
         return  accountsRepository.findLastAccountNo();
+    }
+
+    @Override
+    public Optional<Account> findByAccountNo(long accountNo) {
+        return accountsRepository.findByAccountNo(accountNo);
+    }
+
+    @Override
+    public void updateAccount(String address, String email, String firstname, String gentder,
+                              String lastname, String othernames, String phone, long accout_no) {
+        accountsRepository.updateAccount(address, email, firstname, gentder,
+                lastname, othernames, phone, accout_no);
     }
 }

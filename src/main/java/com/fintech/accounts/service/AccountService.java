@@ -8,7 +8,10 @@ public interface AccountService {
 
     void createAccount(Account account);
 
-    Optional<Account> findByCustomerId(long id);
-
     Account findLastAccountNo();
+
+    Optional<Account> findByAccountNo(long accountNo);
+
+    void updateAccount(String address, String email, String firstname, String gentder,
+                       String lastname, String othernames, String phone, long accout_no);
 }
