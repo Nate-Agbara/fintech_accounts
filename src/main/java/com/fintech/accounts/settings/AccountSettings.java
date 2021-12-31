@@ -15,6 +15,11 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class AccountSettings {
 
+    /**
+     * Generate account number for users
+     * @param lastAccount keeps track of the last created account
+     */
+
     public long createAccount(long lastAccount){
         long newAccount = 0000000000;
         long stop = 2000000000;
@@ -24,6 +29,15 @@ public class AccountSettings {
             log.info("we have exhausted allocated account numbers");
         return newAccount;
     }
+
+    /**
+     * the assumption is that one user can have multiple accounts.
+     * So one customer ID is mapped to different accounts
+     *
+     * @param lastCustomer tracks the last created customer ID
+     * @param newOrExistingCustomer generate ID if the user is a first time user.
+     *                              Handles only new users for now.
+     */
 
     public long createCustomer(long lastCustomer, String newOrExistingCustomer){
         long newCustomer = 0000000;
